@@ -1,0 +1,48 @@
+---
+import Layout from "../../layouts/LayoutWithNav.astro";
+
+const cheatsheets = [
+  {
+    icon: "🌱",
+    title: "Git",
+    description: "Comandos esenciales para tu flujo de trabajo.",
+    href: "/cheatsheets/git",
+    color: "bg-imperial-red/10 hover:bg-imperial-red/20 ring-imperial-red",
+  },
+  {
+    icon: "🔎",
+    title: "Regex",
+    description: "Sintaxis base, anclas y usos típicos.",
+    href: "/cheatsheets/regex",
+    color: "bg-aureus-gold/10 hover:bg-aureus-gold/20 ring-aureus-gold",
+  },
+  {
+    icon: "⚡️",
+    title: "Regex Habituales",
+    description: "Patrones listos para copiar y pegar en tus formularios.",
+    href: "/cheatsheets/regex-habituales",
+    color: "bg-laurel-green/10 hover:bg-laurel-green/20 ring-laurel-green",
+  },
+];
+---
+
+<Layout title="Cheatsheets">
+  <section class="container mx-auto px-4 py-20">
+    <h1 class="mb-10 text-center text-4xl font-extrabold tracking-tight">Cheatsheets</h1>
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
+      {
+        cheatsheets.map((c) => (
+          <a
+            href={c.href}
+            class={`flex flex-col items-start gap-4 rounded-2xl p-6 shadow-card transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:ring-2 ${c.color}`}
+            style="text-decoration: none;"
+          >
+            <div class="w-full text-center text-3xl">{c.icon}</div>
+            <h3 class="text-senate w-full text-center text-2xl font-semibold">{c.title}</h3>
+            <p class="w-full text-center">{c.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,18 @@
+---
+import { type CheatItem } from "../../data/cheatsheets/types";
+import CheatsheetEntry from "./CheatsheetEntry.astro";
+
+const { id, title, items = [], notes } = Astro.props;
+---
+
+<section id={id} class="space-y-4" data-section={title}>
+  <h2 class="text-2xl font-semibold">{title}</h2>
+  <div class="space-y-2 rounded-2xl bg-gray-100 p-4">
+    {
+      items.map((item: CheatItem) => (
+        <CheatsheetEntry primary={item.primary} secondary={item.secondary} />
+      ))
+    }
+  </div>
+  {notes && <p class="text-sm text-gray-500">{notes}</p>}
+</section>

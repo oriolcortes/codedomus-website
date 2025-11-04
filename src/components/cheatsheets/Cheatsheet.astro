@@ -1,0 +1,117 @@
+---
+import { type CheatSection } from "../../data/cheatsheets/types";
+import CheatsheetSection from "./CheatsheetSection.astro";
+import CheatsheetSearch from "./CheatsheetSearch.astro";
+
+const { title, description, sections = [], ui = {} } = Astro.props;
+
+const {
+  searchPlaceholder = "Buscar…",
+  searchHelper = "Filtra por elemento, descripción o sección.",
+  footerText = "Cheatsheet generada con Astro ✨",
+} = ui;
+---
+
+<article class="mx-auto max-w-4xl space-y-12 p-8 font-sans">
+  <header class="space-y-2 text-center">
+    <h1 class="text-4xl font-extrabold tracking-tight">{title}</h1>
+    {description && <p class="text-lg text-gray-600">{description}</p>}
+  </header>
+
+  <CheatsheetSearch placeholder={searchPlaceholder} helperText={searchHelper} />
+
+  <div class="space-y-10" data-cheatsheet>
+    {sections.map((section: CheatSection) => <CheatsheetSection {...section} />)}
+  </div>
+
+  <footer class="pt-4 text-center text-sm text-gray-500">
+    <p>{footerText}</p>
+  </footer>
+</article>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const input = document.querySelector("[data-search]");
+    const sections = Array.from(document.querySelectorAll("section[data-section]"));
+    if (!input || sections.length === 0) return;
+
+
+    // Función para normalizar y quitar acentos
+    const normalize = (str: string = "") => str.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").trim();
+
+    const filter = (raw: string) => {
+      const term = normalize(raw);
+
+      sections.forEach((sectionEl) => {
+        const section = sectionEl as HTMLElement;
+        const title = normalize(section.dataset.section || "");
+        const rows = Array.from(section.querySelectorAll("[data-primary]")) as HTMLElement[];
+
+        if (!term) {
+          section.hidden = false;
+          rows.forEach((r) => (r.hidden = false));
+          return;
+        }
+
+        let hasMatch = false;
+        rows.forEach((row) => {
+          const p = normalize(row.dataset.primary || "");
+          const s = normalize(row.dataset.secondary || "");
+          const show = p.includes(term) || s.includes(term) || title.includes(term);
+          row.hidden = !show;
+          hasMatch ||= show;
+        });
+
+        section.hidden = !hasMatch;
+      });
+    };
+
+    input.addEventListener("input", (e) => {
+      const target = e.target as HTMLInputElement | null;
+      filter(target?.value || "");
+    });
+  });
+  // if (typeof window !== "undefined") {
+  //   const input = document.querySelector("[data-search]");
+  //   const container = document.querySelector("[data-cheatsheet]");
+  //   if (!input || !container) return;
+  //   const sectionEls = Array.from(container.querySelectorAll("section[data-section]"));
+
+  //   input?.addEventListener("input", (e) => {
+  //     const target = e.target as HTMLInputElement | null;
+  //     if (!target) return;
+  //     const term = target.value.toLowerCase().trim();
+
+  //     sectionEls.forEach((sectionElement) => {
+  //       const section = sectionElement as HTMLElement;
+  //       if (section.dataset.section === undefined) return;
+  //       const title = section.dataset.section.toLowerCase();
+  //       const rows = Array.from(section.querySelectorAll("[data-primary]")).map(
+  //         (el) => el as HTMLElement,
+  //       );
+
+  //       if (!term) {
+  //         section.style.display = "";
+  //         rows.forEach((r) => (r.style.display = ""));
+  //         return;
+  //       }
+
+  //       let hasMatch = false;
+
+  //       rows.forEach((row) => {
+  //         if (!row.dataset.primary || !row.dataset.secondary) return;
+  //         const p = row.dataset.primary.toLowerCase();
+  //         const s = row.dataset.secondary.toLowerCase();
+  //         if (p.includes(term) || s.includes(term) || title.includes(term)) {
+  //           row.style.display = "";
+  //           hasMatch = true;
+  //         } else {
+  //           row.style.display = "none";
+  //         }
+  //       });
+
+  //       section.style.display = hasMatch ? "" : "none";
+  //     });
+  //   });
+  // }
+</script>
