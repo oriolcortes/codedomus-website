@@ -56,12 +56,9 @@ export const regexCheatsheet: CheatSheetData = {
           secondary: "username típico (3–16 chars)",
         },
         {
-          primary: "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d).{8,}$",
-          secondary: "contraseña fuerte: 8+ chars, mayús, minús y número",
-        },
-        {
-          primary: "^(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{8,}$",
-          secondary: "contraseña con símbolo especial (8+ chars)",
+          primary:
+            "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,}$",
+          secondary: "contraseña fuerte: 8+ chars, mayús, minús, número y símbolo especial",
         },
       ],
     },
