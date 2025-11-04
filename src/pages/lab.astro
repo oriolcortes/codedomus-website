@@ -1,0 +1,58 @@
+---
+import Layout from "../layouts/LayoutWithNav.astro";
+const title = "Lab";
+const projects = [
+  {
+    image: "/lab/pokedex-vanilla.ico",
+    title: "Pokedex Vanilla",
+    description: "Pokedex hecha solo con JS y la PokeAPI.",
+    href: "https://oriolcortes.github.io/pokedex-vanilla/",
+    repo: "https://github.com/oriolcortes/pokedex-vanilla",
+    color: "bg-imperial-red/20 border-imperial-red",
+  },
+];
+---
+
+<Layout title={`${title} - CodeDomus`}>
+  <section class="container mx-auto px-4 py-20">
+    <h1 class="mb-10 text-center text-4xl font-extrabold tracking-tight">Lab</h1>
+    <p class="mb-12 text-center text-lg opacity-80">
+      Pequeños proyectos experimentales y prototipos.
+    </p>
+
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
+      {
+        projects.map((p) => (
+          <div
+            class={`flex flex-col items-start gap-4 rounded-2xl border-2 p-6 shadow-card transition-all duration-200 hover:shadow-lg ${p.color}`}
+          >
+            <div class="flex w-full justify-center">
+              <img src={p.image} alt={p.title} class="h-24 w-24 object-contain" />
+            </div>
+
+            <h3 class="text-senate w-full text-center text-2xl font-semibold">{p.title}</h3>
+            <p class="w-full text-center">{p.description}</p>
+
+            <div class="mt-4 flex w-full justify-center gap-3">
+              <a
+                href={p.href}
+                class="rounded-lg border border-(--color-primary) bg-(--color-primary)/10 px-4 py-1.5 text-sm font-medium text-(--color-primary) shadow-sm backdrop-blur-md transition-all duration-200 hover:bg-(--color-primary)/20 hover:shadow-md"
+              >
+                Ver proyecto
+              </a>
+
+              <a
+                href={p.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-lg border border-(--color-accent) bg-(--color-accent)/10 px-4 py-1.5 text-sm font-medium text-(--color-accent) shadow-sm backdrop-blur-md transition-all duration-200 hover:bg-(--color-accent)/20 hover:shadow-md"
+              >
+                Ver repo
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
