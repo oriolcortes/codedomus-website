@@ -1,5 +1,5 @@
 ---
-import { type CheatSection } from "../../data/cheatsheets/types";
+import { type CheatSection } from "@/data/cheatsheets/types";
 import CheatsheetSection from "./CheatsheetSection.astro";
 import CheatsheetSearch from "./CheatsheetSearch.astro";
 
@@ -35,9 +35,13 @@ const {
     const sections = Array.from(document.querySelectorAll("section[data-section]"));
     if (!input || sections.length === 0) return;
 
-
     // Función para normalizar y quitar acentos
-    const normalize = (str: string = "") => str.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").trim();
+    const normalize = (str: string = "") =>
+      str
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/\p{Diacritic}/gu, "")
+        .trim();
 
     const filter = (raw: string) => {
       const term = normalize(raw);
