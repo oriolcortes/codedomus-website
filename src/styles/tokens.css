@@ -13,6 +13,8 @@
   --color-bronze-ember: #b4893f;
   --color-onyx-night: #101820;
   --color-slate-fortress: #18232d;
+  --color-amber-orange: #ffedd5;
+  --color-ocean-blue: #0366d6;
 
   /* ☀️ Light (default) */
   --color-primary: var(--color-imperial-red);
