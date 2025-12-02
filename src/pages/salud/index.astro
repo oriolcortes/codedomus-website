@@ -1,0 +1,67 @@
+---
+import Layout from "@/layouts/LayoutWithNav.astro";
+
+const items = [
+  {
+    title: "Higiene laboral",
+    description: "Ergonomía, pausas activas y cómo evitar lesiones comunes.",
+    icon: "🩺",
+    href: "/salud/higiene",
+    color: "bg-imperial-red/10 hover:bg-imperial-red/20 ring-imperial-red",
+  },
+  {
+    title: "Derechos laborales",
+    description: "Leyes españolas que protegen a los trabajadores del sector TIC.",
+    icon: "⚖️",
+    href: "/salud/derechos",
+    color: "bg-ocean-blue/10 hover:bg-ocean-blue/20 ring-ocean-blue",
+  },
+  {
+    title: "Salud mental — 024",
+    description: "Recursos oficiales y líneas de ayuda para prevenir el burnout y crisis.",
+    icon: "💛",
+    href: "/salud/salud-mental",
+    color: "bg-amber-orange/10 hover:bg-amber-orange/20 ring-amber-orange",
+  },
+];
+---
+
+<Layout title="Salud - CodeDomus">
+  <section class="container mx-auto px-4 py-20">
+
+        <button onclick="history.back()" 
+          class="mb-10 inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium 
+         border border-(--color-border-default) bg-(--color-background-card) 
+         hover:bg-(--color-background-card)/70 hover:-translate-y-0.5 
+         transition-all shadow-sm hover:shadow-md">
+          ← Volver
+      </button>
+    <h1 class="mb-10 text-center text-4xl font-extrabold tracking-tight">
+       Salud
+    </h1>
+
+    <p class="mb-12 text-center text-lg opacity-80 max-w-3xl mx-auto">
+      Tu bienestar también es parte del desarrollo. Elige una categoría para aprender más.
+    </p>
+
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
+      {
+        items.map((item) => (
+          <a
+            href={item.href}
+            class={`flex flex-col items-start gap-4 rounded-2xl p-6 shadow-card 
+                    transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:ring-2
+                    ${item.color}`}
+            style="text-decoration: none;"
+          >
+            <div class="w-full text-center text-3xl">{item.icon}</div>
+            <h3 class="text-senate w-full text-center text-2xl font-semibold">
+              {item.title}
+            </h3>
+            <p class="w-full text-center">{item.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

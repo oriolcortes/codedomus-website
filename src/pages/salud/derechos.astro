@@ -1,0 +1,60 @@
+---
+import Layout from "@/layouts/LayoutWithNav.astro";
+---
+
+<Layout title="Derechos laborales - CodeDomus">
+  <section class="container mx-auto px-4 py-20">
+
+    <button onclick="history.back()" 
+          class="mb-10 inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium 
+         border border-(--color-border-default) bg-(--color-background-card) 
+         hover:bg-(--color-background-card)/70 hover:-translate-y-0.5 
+         transition-all shadow-sm hover:shadow-md">
+          ← Volver
+    </button>
+
+
+    <h1 class="text-center text-4xl font-extrabold tracking-tight mb-4">
+      ⚖️ Derechos laborales (España)
+    </h1>
+
+    <p class="text-center text-lg opacity-80 max-w-2xl mx-auto mb-12">
+      Conoce las leyes que protegen a los desarrolladores y trabajadores del sector tecnológico.
+    </p>
+
+    <div class="max-w-3xl mx-auto space-y-10 opacity-90 leading-relaxed">
+
+      <div class="text-left">
+        <h2 class="text-2xl font-semibold mb-4">Jornada y descansos</h2>
+        <ul class="list-disc ml-6 space-y-2">
+          <li>Máximo 40h semanales.</li>
+          <li>12h de descanso entre jornadas.</li>
+          <li>1 día y medio de descanso semanal.</li>
+          <li>Horas extra voluntarias y pagadas.</li>
+        </ul>
+      </div>
+
+      <div class="text-left">
+        <h2 class="text-2xl font-semibold mb-4">Derecho a la desconexión digital</h2>
+        <p class="ml-1">
+          Ley Orgánica 3/2018 — No estás obligado a responder mensajes fuera de horario.
+        </p>
+      </div>
+
+      <div class="text-left">
+        <h2 class="text-2xl font-semibold mb-4">Abusos comunes</h2>
+        <ul class="list-disc ml-6 space-y-2">
+          <li>Falsos autónomos.</li>
+          <li>Horas extra no pagadas.</li>
+          <li>Becarios haciendo trabajo de empleados.</li>
+        </ul>
+
+        <p class="mt-4">
+          Puedes denunciar anónimamente en la Inspección de Trabajo.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+</Layout>

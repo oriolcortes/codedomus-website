@@ -1,0 +1,51 @@
+---
+import Layout from "@/layouts/LayoutWithNav.astro";
+---
+
+<Layout title="Higiene laboral - CodeDomus">
+  <section class="container mx-auto px-4 py-20">
+
+      <button onclick="history.back()" 
+          class="mb-10 inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium 
+         border border-(--color-border-default) bg-(--color-background-card) 
+         hover:bg-(--color-background-card)/70 hover:-translate-y-0.5 
+         transition-all shadow-sm hover:shadow-md">
+          ← Volver
+      </button>
+
+    <h1 class="text-center text-4xl font-extrabold tracking-tight mb-4">
+      🩺 Higiene laboral
+    </h1>
+
+    <p class="text-center text-lg opacity-80 max-w-2xl mx-auto mb-12">
+      Cómo evitar lesiones, mejorar tu postura y mantener un ritmo saludable mientras programas.
+    </p>
+
+    <div class="max-w-3xl mx-auto space-y-10 opacity-90 leading-relaxed">
+
+      <div class="text-left">
+        <h2 class="text-2xl font-semibold mb-4">Riesgos comunes</h2>
+        <ul class="list-disc ml-6 space-y-2">
+          <li>Fatiga visual por pantallas.</li>
+          <li>Dolor cervical y lumbar por mala postura.</li>
+          <li>Síndrome del túnel carpiano.</li>
+          <li>Sedentarismo y dolor de espalda baja.</li>
+          <li>Burnout y fatiga mental.</li>
+        </ul>
+      </div>
+
+      <div class="text-left">
+        <h2 class="text-2xl font-semibold mb-4">Buenas prácticas</h2>
+        <ul class="list-disc ml-6 space-y-2">
+          <li>Método 20-20-20.</li>
+          <li>Pausas Pomodoro.</li>
+          <li>Ergonomía: silla adecuada y pantalla a la altura de los ojos.</li>
+          <li>Estiramientos cada 1–2 horas.</li>
+          <li>Hidratación y pausas activas.</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </section>
+</Layout>
